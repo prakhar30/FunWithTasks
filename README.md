@@ -98,3 +98,7 @@ nest g controller tasks --no-spec
 ```
 nest g service tasks --no-spec
 ```
+7. Add a new NPM package with yarn - 
+```
+yarn add uuid
+```
