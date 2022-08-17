@@ -71,3 +71,30 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Prakhar's Notes
+
+1. Install the NestJS CLI - 
+```
+yarn global add @nestjs/cli
+```
+2. Create a new project with NestJS - 
+```
+nest new nestjs-task-management
+```
+3. Using NestJS generate method - 
+```
+nest g --help
+```
+4. Using NestJS g to create a new module - 
+```
+nest g module tasks
+```
+5. Create a controller without tests - 
+```
+nest g controller tasks --no-spec
+```
+6. Create a service without tests - 
+```
+nest g service tasks --no-spec
+```
