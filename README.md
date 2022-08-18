@@ -102,3 +102,12 @@ nest g service tasks --no-spec
 ```
 yarn add uuid
 ```
+8. To use pipes for validation in NestJS, we need to add 2 packages - 
+```
+yarn add class-validator class-transformer
+```
+9. class-validator 
+```
+https://github.com/typestack/class-validator
+```
+10. 
