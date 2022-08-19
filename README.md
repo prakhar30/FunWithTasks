@@ -110,4 +110,30 @@ yarn add class-validator class-transformer
 ```
 https://github.com/typestack/class-validator
 ```
-10. 
+10. Start a new docker container for postgres called postgres-nest
+```
+docker run --name postgres-nest -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+```
+11. View running docker containers 
+```
+docker container ls
+```
+12. Stop a running container named postgres-nest
+```
+docker container stop postgres-nest
+```
+13. Start a container named postgres-nest
+```
+docker container start postgres-nest
+```
+14. Delete a container named postgres-nest
+```
+docker container rm postgres-nest
+```
+15. Install pgAdmin and then setup a new server with the details configured for the docker container above. 
+16. Object Relational Mapping ORM - a technique that lets you query and manipulate data from a database, using an object-oriented paradigm.
+17. TypeORM - an ORM library that can run in Node.js and used with Typescript. [typeorm.io](typeorm.io)
+18. Add packages to use TypeORM - 
+```
+yarn add typeorm @nestjs/typeorm pg
+```
