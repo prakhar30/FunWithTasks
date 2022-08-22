@@ -11,7 +11,6 @@ import {
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetFilterTasksDto } from './dto/get-filter-tasks.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
-import { TaskStatus } from './task-status-enum';
 import { Task } from './task.entity';
 import { TasksService } from './tasks.service';
 
@@ -19,14 +18,10 @@ import { TasksService } from './tasks.service';
 export class TasksController {
   constructor(private taskService: TasksService) {}
 
-  // @Get()
-  // getTasks(@Query() filterDto: GetFilterTasksDto): Task[] {
-  //   if (Object.keys(filterDto).length) {
-  //     return this.taskService.getTasksWithFilter(filterDto);
-  //   } else {
-  //     return this.taskService.getAllTasks();
-  //   }
-  // }
+  @Get()
+  getTasks(@Query() filterDto: GetFilterTasksDto): Promise<Task[]> {
+    return this.taskService.getTasks(filterDto);
+  }
 
   @Get('/:id')
   getTaskById(@Param('id') id: string): Promise<Task> {
