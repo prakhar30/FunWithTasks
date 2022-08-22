@@ -132,8 +132,12 @@ docker container rm postgres-nest
 ```
 15. Install pgAdmin and then setup a new server with the details configured for the docker container above. 
 16. Object Relational Mapping ORM - a technique that lets you query and manipulate data from a database, using an object-oriented paradigm.
-17. TypeORM - an ORM library that can run in Node.js and used with Typescript. [typeorm.io](typeorm.io)
+17. TypeORM - an ORM library that can run in Node.js and used with Typescript. [typeorm.io](https://typeorm.io)
 18. Add packages to use TypeORM - 
 ```
 yarn add typeorm @nestjs/typeorm pg
+```
+19. Remove a package from yarn, like uuid - 
+```
+yarn remove uuid
 ```
