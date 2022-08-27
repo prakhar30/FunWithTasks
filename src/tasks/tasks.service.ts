@@ -13,9 +13,11 @@ export class TasksService {
     @InjectRepository(Task) private tasksRepository: Repository<Task>,
   ) {}
 
-  async getTasks(filterDto: GetFilterTasksDto): Promise<Task[]> {
+  async getTasks(filterDto: GetFilterTasksDto, user: User): Promise<Task[]> {
     const { status, search } = filterDto;
     const query = this.tasksRepository.createQueryBuilder('task');
+
+    query.where({ user });
 
     if (status) {
       query.andWhere('task.status = :status', { status });
@@ -23,7 +25,7 @@ export class TasksService {
 
     if (search) {
       query.andWhere(
-        'LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search)',
+        '(LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search))',
         { search: `%${search}%` },
       ); // %% allows us to match incomplete words too, like cl in clean
     }
@@ -32,10 +34,11 @@ export class TasksService {
     return tasks;
   }
 
-  async getTaskById(id: string): Promise<Task> {
+  async getTaskById(id: string, user: User): Promise<Task> {
     const found = await this.tasksRepository.findOne({
       where: {
         id: id,
+        user: user,
       },
     });
     if (!found) {
@@ -59,15 +62,15 @@ export class TasksService {
     return task;
   }
 
-  async deleteTask(id: string): Promise<void> {
-    const result = await this.tasksRepository.delete(id);
+  async deleteTask(id: string, user: User): Promise<void> {
+    const result = await this.tasksRepository.delete({ id: id, user: user });
     if (result.affected === 0) {
       throw new NotFoundException(`Task with id ${id} not found`);
     }
   }
 
-  async updateTask(id: string, status: TaskStatus): Promise<Task> {
-    const task = await this.getTaskById(id);
+  async updateTask(id: string, status: TaskStatus, user: User): Promise<Task> {
+    const task = await this.getTaskById(id, user);
     task.status = status;
     await this.tasksRepository.save(task);
     return task;
