@@ -145,3 +145,8 @@ yarn remove uuid
 ```
 yarn add bcrypt
 ```
+21. Setup for Auth using Passport.js and JWT - 
+```
+yarn add @nestjs/jwt @nestjs/passport passport passport-jwt
+```
+22. [JWT](https://jwt.io)
