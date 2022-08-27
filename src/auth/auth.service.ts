@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -12,7 +13,7 @@ import * as brycpt from 'bcrypt';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User) private tasksRepository: Repository<User>,
+    @InjectRepository(User) private usersRepository: Repository<User>,
   ) {}
 
   async signUp(authcredentialsDto: AuthCredentialsDto): Promise<void> {
@@ -21,19 +22,32 @@ export class AuthService {
     const salt = await brycpt.genSalt();
     const hashedPassword = await brycpt.hash(password, salt);
 
-    const user = this.tasksRepository.create({
+    const user = this.usersRepository.create({
       username,
       password: hashedPassword,
     });
 
     try {
-      await this.tasksRepository.save(user);
+      await this.usersRepository.save(user);
     } catch (error) {
       if (error.code === '23505') {
         throw new ConflictException('Username already exists dude');
       } else {
         throw new InternalServerErrorException();
       }
+    }
+  }
+
+  async signIn(authCredentialsDto: AuthCredentialsDto): Promise<string> {
+    const { username, password } = authCredentialsDto;
+    const user = await this.usersRepository.findOne({
+      where: { username: username },
+    });
+
+    if (user && (await brycpt.compare(password, user.password))) {
+      return 'success';
+    } else {
+      throw new UnauthorizedException('Please check your login credentials');
     }
   }
 }
