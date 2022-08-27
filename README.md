@@ -150,3 +150,7 @@ yarn add bcrypt
 yarn add @nestjs/jwt @nestjs/passport passport passport-jwt
 ```
 22. [JWT](https://jwt.io)
+23. To add typescript types to passport, just to make intergration easier - 
+```
+yarn add @types/passport-jwt
+```
