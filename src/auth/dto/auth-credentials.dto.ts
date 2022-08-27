@@ -7,7 +7,10 @@ export class AuthCredentialsDto {
   username: string;
 
   @IsString()
-  @MinLength(8)
+  @MinLength(8, {
+    message:
+      'Random min length not allowed, put something above 8 chars please',
+  })
   @MaxLength(20)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'password is too weak',
