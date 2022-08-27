@@ -141,3 +141,7 @@ yarn add typeorm @nestjs/typeorm pg
 ```
 yarn remove uuid
 ```
+20. Add [bcrypt](https://www.npmjs.com/package/bcrypt) - 
+```
+yarn add bcrypt
+```
