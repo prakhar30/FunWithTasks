@@ -176,4 +176,20 @@ or
 ```
 npm install -g heroku
 ```
-2. 
+2. Login on Heroku - 
+```
+heroku login
+```
+3. Create a new heroku app
+4. Add a Postgres addon associated with this newly added app
+5. Heroku deployment pipeline depends on git - to trigger a build. In order to do this, heroku needs us to add itself as an additional remote git. Use heroku CLI for this- 
+```
+heroku git:remote -a NAME_OF_APP
+```
+6. Fix this typescript buildtime/runtime envrionment fix - 
+```
+heroku config:set NPM_CONFIG_PRODUCTION=false
+heroku config:set NODE_ENV=production
+heroku config:set STAGE=prod
+```
+7. We can now set the DB env varibales using the same CLI way or the user interface way. Upto us.
