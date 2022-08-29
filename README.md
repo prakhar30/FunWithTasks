@@ -154,3 +154,7 @@ yarn add @nestjs/jwt @nestjs/passport passport passport-jwt
 ```
 yarn add @types/passport-jwt
 ```
+24. Setup config module for environment values - 
+```
+yarn add @nestjs/config
+```
