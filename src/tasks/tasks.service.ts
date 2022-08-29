@@ -39,6 +39,11 @@ export class TasksService {
 
     try {
       const tasks = await query.getMany();
+      this.logger.verbose(
+        `User "${user.username}" retreiving all tasks. Tasks: ${JSON.stringify(
+          tasks,
+        )}`,
+      );
       return tasks;
     } catch (error) {
       this.logger.error(
