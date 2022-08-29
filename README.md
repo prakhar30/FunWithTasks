@@ -158,3 +158,11 @@ yarn add @types/passport-jwt
 ```
 yarn add @nestjs/config
 ```
+25. Config scheme validations for Nest.js, need to start 2 packages to get started, [joi](https://github.com/hapijs/joi) - 
+
+```
+yarn add @hapi/joi
+
+yarn add -D @types/hapi__joi // 2 underscores. dev dependency for types for joi
+```
+26.
