@@ -165,4 +165,15 @@ yarn add @hapi/joi
 
 yarn add -D @types/hapi__joi // 2 underscores. dev dependency for types for joi
 ```
-26.
+
+## Devops Notes
+
+1. Add Heroku CLI to your machine - 
+```
+yarn global add heroku
+```
+or 
+```
+npm install -g heroku
+```
+2. 
