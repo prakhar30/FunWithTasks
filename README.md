@@ -202,3 +202,9 @@ git push heroku master
 ```
 heroku logs --tail
 ```
+
+## Unit Testing Notes
+
+1. Using [JestJS](https://jestjs.io/) for unit testing with Nest.js
+2. Jest expects test file to have a type of `.spec.ts`
+3. Run tests in watch mode - `yarn test --watch`
