@@ -193,3 +193,12 @@ heroku config:set NODE_ENV=production
 heroku config:set STAGE=prod
 ```
 7. We can now set the DB env varibales using the same CLI way or the user interface way. Upto us.
+8. Add procfile as required by heroku, check sample in code root
+9. To deploy the current commit to heroku - 
+```
+git push heroku master
+```
+10. Check heroku app logs - 
+```
+heroku logs --tail
+```
